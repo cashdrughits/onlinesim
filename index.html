@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Шаблоны ответов — onlinesim / onlineproxy</title>
+<meta name="description" content="Личная база шаблонов ответов поддержки" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>💬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="header-title">
+      <span class="logo-dot"></span>
+      <div>
+        <h1>Шаблоны ответов</h1>
+        <div class="subtitle">onlinesim.io · onlineproxy.io</div>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Сменить тему" aria-label="Сменить тему">
+      <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </header>
+
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+    <input type="text" id="searchInput" placeholder="Поиск по ключевым словам: ватсап, возврат, прокси, ip…" autocomplete="off" />
+    <button class="search-clear" id="searchClear" aria-label="Очистить">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <div class="result-count" id="resultCount"></div>
+
+  <div class="category-filters" id="categoryFilters"></div>
+
+  <main id="content"></main>
+
+</div>
+
+<script src="templates.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

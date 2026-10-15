@@ -12,7 +12,16 @@
 const CATEGORIES = [
   { id: "refunds", name: "Возвраты", icon: "wallet" },
   { id: "sms-issues", name: "СМС не приходит", icon: "message-x" },
-  { id: "services", name: "Сервисы (WhatsApp, Telegram и др.)", icon: "apps" },
+  { id: "telegram", name: "Telegram", icon: "send" },
+  { id: "whatsapp", name: "WhatsApp", icon: "message-circle" },
+  { id: "google", name: "Google", icon: "circle" },
+  { id: "vinted", name: "Vinted", icon: "shirt" },
+  { id: "facebook", name: "Facebook", icon: "facebook" },
+  { id: "bybit", name: "Bybit", icon: "coins" },
+  { id: "viber", name: "Viber", icon: "phone" },
+  { id: "yandex", name: "Яндекс", icon: "search" },
+  { id: "vk", name: "ВКонтакте", icon: "users" },
+  { id: "other-services", name: "Другие сервисы", icon: "apps" },
   { id: "rent", name: "Арендные номера", icon: "calendar-clock" },
   { id: "universal", name: "Универсальные ответы", icon: "infinity" },
   { id: "proxy", name: "Прокси", icon: "shuffle" },
@@ -173,7 +182,7 @@ Clear the cache and cookies of the {{service}} website or switch browsers. Then 
   // ===================== СЕРВИСЫ (WhatsApp / Telegram / др.) =====================
   {
     id: "svc-wa-1",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — рекомендации по немецким (и др.) номерам",
     ru: `Дело в том, что у WhatsApp продвинутая система безопасности, которая запоминает пользователей по устройству и IP-адресу и может прекратить отправку СМС-кодов после нескольких попыток входа или если страна номера телефона не совпадает с вашей геолокацией.
 
@@ -192,7 +201,7 @@ For best results with {{service}} numbers, do the following:
   },
   {
     id: "svc-wa-2",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — блокировка после регистрации, не возвратный случай",
     ru: `Это не возвратный случай, так как мы не несём ответственности за блокировку аккаунта после регистрации — блокировка, выданная после регистрации, не подтверждает проблему с номером.
 
@@ -208,7 +217,7 @@ To avoid blocking in the future, I recommend: clearing the cache and reinstallin
   },
   {
     id: "svc-wa-3",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — блок, СМС доставлено, возврат невозможен (развёрнуто)",
     ru: `Здравствуйте, аккаунт WhatsApp был заблокирован после регистрации. Такие случаи не подлежат возврату средств, так как СМС было успешно доставлено и услуга со своей стороны оказана корректно. Кроме того, WhatsApp не отправляет СМС на номера, которые ранее были заблокированы.
 
@@ -224,7 +233,7 @@ It is not technically possible to receive an SMS again, as the service does not 
   },
   {
     id: "svc-wa-4",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — блок, возврат как исключение",
     ru: `Это не возвратный случай, но я верну тебе деньги за этот номер на твой баланс.
 
@@ -236,7 +245,7 @@ Before your next registration attempt, clear the WhatsApp app cache and reinstal
   },
   {
     id: "svc-wa-5",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — номер вернулся в пул оператора",
     ru: `Здравствуйте. Номер был получен по корпоративному юридическому соглашению с мобильным оператором, а не как постоянная личная SIM-карта. Когда такая SIM больше не обслуживается, оператор может вернуть номер в пул и переиздать его другому клиенту. Это может повлиять на аккаунт WhatsApp, привязанный к этому номеру.
 
@@ -252,7 +261,7 @@ To better protect your WhatsApp account in the future, please link an email addr
   },
   {
     id: "svc-wa-6",
-    category: "services",
+    category: "whatsapp",
     title: "WhatsApp — неверный код (антифрод)",
     ru: `Мы отображаем только те коды, которые отправляет сам WhatsApp. Ошибка «неверный код» не связана с самим номером — это стандартная реакция системы безопасности WhatsApp, если она считает вашу регистрационную активность подозрительной.
 
@@ -264,7 +273,7 @@ After each attempt, I recommend changing your IP address using a VPN or proxy ma
   },
   {
     id: "svc-tg-1",
-    category: "services",
+    category: "telegram",
     title: "Telegram — звонит вместо СМС",
     ru: `Добрый день, чтобы Telegram перестал звонить, выполните, пожалуйста, следующее:
 
@@ -280,7 +289,7 @@ After each attempt, I recommend changing your IP address using a VPN or proxy ma
   },
   {
     id: "svc-tg-2",
-    category: "services",
+    category: "telegram",
     title: "Telegram — просит оплату премиум",
     ru: `Telegram запрашивает оплату премиум в качестве меры безопасности, если обнаруживает подозрительную активность.
 
@@ -292,7 +301,7 @@ To stop Telegram from asking for premium payment, clear the cache and reinstall 
   },
   {
     id: "svc-tg-3",
-    category: "services",
+    category: "telegram",
     title: "Telegram — «занятые номера» на деле антифрод",
     ru: `Здравствуйте, я понимаю ваше негодование. На вашем скриншоте вижу, что вы столкнулись не с занятым номером, а с внутренними ограничениями системы безопасности Telegram — он отправляет код на другое устройство даже в тех случаях, если его не существует (Антифрод Telegram).
 
@@ -308,7 +317,7 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
   },
   {
     id: "svc-tg-4",
-    category: "services",
+    category: "telegram",
     title: "Telegram — привязка номера к существующему аккаунту дольше",
     ru: `Дело в том, что процесс привязки номера к уже существующему аккаунту Telegram всегда занимает чуть больше времени. Рекомендую запрашивать код в мобильном приложении Telegram, очистить кэш и переустановить его (убедитесь, что не потеряете доступ к аккаунту). Затем закажите несколько номеров из списка стран: Турция, Британия, Португалия, Ирландия, Польша.`,
     en: `The thing is, the process of linking a number to an already existing Telegram account always takes a bit more time. I recommend requesting the code in the Telegram mobile app, clearing the cache and reinstalling it (make sure you won't lose access to the account). Then order a few numbers from the list of countries: Turkey, UK, Portugal, Ireland, Poland.`,
@@ -316,7 +325,7 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
   },
   {
     id: "svc-vinted-1",
-    category: "services",
+    category: "vinted",
     title: "Vinted — общий совет",
     ru: `Очистите историю браузера, кэш и куки на сайте Vinted или смените браузер. Затем попробуйте 2–3 номера. Если результат остаётся неудачным, переключитесь на мобильное устройство и попробуйте зарегистрироваться в приложении Vinted.`,
     en: `Clear your browser history, cache, and cookies on the Vinted website or switch browsers. Then try 2-3 numbers. If the result remains unsuccessful, switch to a mobile device and try registering in the Vinted mobile app.`,
@@ -324,7 +333,7 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
   },
   {
     id: "svc-vinted-2",
-    category: "services",
+    category: "vinted",
     title: "Vinted — потерян доступ к номеру, блок аккаунта",
     ru: `Так как у вас больше нет доступа к телефонному номеру, рекомендую обратиться напрямую в поддержку Vinted, а не пытаться использовать другой временный номер. Объясните, что вы являетесь владельцем аккаунта, но номер, использованный для верификации, больше недоступен. Они могут запросить у вас информацию для подтверждения владения аккаунтом.`,
     en: `Since you no longer have access to the phone number, I would recommend contacting Vinted Support directly rather than trying to use another temporary number. Explain that you own the account but the number used for verification is no longer available. They may ask you for information to verify ownership of the account.`,
@@ -332,7 +341,7 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
   },
   {
     id: "svc-fb-1",
-    category: "services",
+    category: "facebook",
     title: "Facebook — общий совет",
     ru: `Очистите кэш и переустановите мобильное приложение Facebook. Затем попробуйте 2–3 номера стран из списка:
 🔗 Рекомендуемые страны для Facebook (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1734789313-best-countries-for-facebook)
@@ -346,7 +355,7 @@ If result remains unsuccessful, switch device to PC/laptop and try to register i
   },
   {
     id: "svc-bybit-1",
-    category: "services",
+    category: "bybit",
     title: "Bybit — СМС не приходит из-за гео",
     ru: `Если ваш IP не соответствует стране номера, то СМС может не поступить на номер из-за механизмов сервиса Bybit, так как он привязан к гео.
 
@@ -362,7 +371,7 @@ https://seed4me.app/ — a good VPN with a trial period.`,
   },
   {
     id: "svc-viber-1",
-    category: "services",
+    category: "viber",
     title: "Viber — греческий номер, инструкция по VPN",
     ru: `Пожалуйста, попробуйте сделать следующее:
 
@@ -386,7 +395,7 @@ If possible, use a different Greek VPN server if the first one doesn't work.`,
   },
   {
     id: "svc-google-1",
-    category: "services",
+    category: "google",
     title: "Google — восстановление доступа без СМС на старый номер",
     ru: `Пожалуйста, сделайте следующее:
 
@@ -410,7 +419,7 @@ Google itself determines which recovery methods are available for a specific acc
   },
   {
     id: "svc-google-2",
-    category: "services",
+    category: "google",
     title: "Google — СМС не приходит (веб-версия)",
     ru: `Эта ошибка связана с тем, что создать аккаунт Google через веб-версию сейчас крайне сложно. Рекомендую использовать мобильное устройство для создания аккаунта, а затем привязать номер телефона к нему. Также важно использовать IP страны того номера, который вы заказываете, при регистрации через веб-версию. Рекомендую номера Германии, Польши и Румынии.`,
     en: `This error is related to the fact that creating a Google account through the web version is currently extremely difficult. I recommend using a mobile device to create an account and then linking your phone number to it. It is also important to use the IP of the country of the number you are ordering when registering via the web version. I recommend using numbers from Germany, Poland, and Romania.`,
@@ -418,7 +427,7 @@ Google itself determines which recovery methods are available for a specific acc
   },
   {
     id: "svc-google-3",
-    category: "services",
+    category: "google",
     title: "Google — просит QR-код вместо СМС",
     ru: `Ситуация, когда Google просит QR-код вместо отправки СМС, связана с тем, что Google считает вашу активность подозрительной.
 
@@ -430,7 +439,7 @@ To reduce the risk of internal restrictions and increase the chances of receivin
   },
   {
     id: "svc-yandex-1",
-    category: "services",
+    category: "yandex",
     title: "Яндекс — неверный код",
     ru: `Добрый день! Мы отображаем только те коды, которые отправляет сам Яндекс. Ошибка «неверный код» не связана с самим номером. Это стандартная реакция системы безопасности Яндекса, если она считает ваши действия при регистрации подозрительными.
 
@@ -442,7 +451,7 @@ After each attempt, I recommend changing your IP address using a VPN/proxy match
   },
   {
     id: "svc-vk-1",
-    category: "services",
+    category: "vk",
     title: "ВКонтакте — проблема с иностранными номерами",
     ru: `Получить СМС от ВК может быть проблематично из-за специфики их рассылки сообщений, которая стабильно работает только на российских номерах. На иностранные номера СМС могут не поступать вовсе.
 
@@ -454,7 +463,7 @@ I recommend numbers from Uzbekistan, Poland, Moldova, Latvia, Romania — accord
   },
   {
     id: "svc-openai-1",
-    category: "services",
+    category: "other-services",
     title: "OpenAI/ChatGPT отправляет код в WhatsApp",
     ru: `Чтобы OpenAI перестал отправлять код на WhatsApp, очистите кэш и куки сайта OpenAI либо смените браузер, затем закажите несколько новых номеров.`,
     en: `To stop OpenAI from sending the code to WhatsApp, clear the cache and cookies of the OpenAI website or switch browsers, then order a few new numbers.`,
@@ -462,7 +471,7 @@ I recommend numbers from Uzbekistan, Poland, Moldova, Latvia, Romania — accord
   },
   {
     id: "svc-ontaxi-1",
-    category: "services",
+    category: "other-services",
     title: "OnTaxi — много попыток, антифрод",
     ru: `Вижу, вы заказывали много номеров для OnTaxi. Объясню, почему советуем переустанавливать приложение и менять IP-адрес. У OnTaxi, как и у других крупных приложений, есть система безопасности, которая может перестать отправлять код после многократных попыток входа с одного устройства и IP-адреса.
 
@@ -474,7 +483,7 @@ So we recommend clearing the cache and reinstalling the app, then changing your 
   },
   {
     id: "svc-battlenet-1",
-    category: "services",
+    category: "other-services",
     title: "Battle.net — постоплата",
     ru: `У нас нет информации о том, какие номера являются постоплатными, поэтому, пожалуйста, закажите новый номер. Средства списываются только после получения СМС.`,
     en: `We do not have information on which numbers are postpaid, so please order a new number. Funds are deducted only after the SMS is received.`,
@@ -872,5 +881,113 @@ The service is considered provided once the SMS is received, as we do not provid
     ru: `Вернул вам средства за номер на баланс.`,
     en: `I have refunded the funds for the number to your balance.`,
     tags: ["возврат оформлен", "refund completed", "деньги на балансе"],
+  },
+
+  // ===================== GOOGLE (доп.) =====================
+  {
+    id: "google-4",
+    category: "google",
+    title: "Этот номер нельзя использовать для подтверждения",
+    ru: `Ошибка «Этот номер нельзя использовать для подтверждения» является внутренней системной мерой, чтобы отгородить сервис Google от использования виртуальными номерами.
+
+Причины:
+1. Многократные запросы на регистрацию с одного IP и браузера.
+2. Частое использование режима инкогнито (не рекомендуется, особенно в Google Chrome).
+3. Неочищенный кэш и история браузера.
+
+Очистите, пожалуйста, кэш и куки сайта Google либо смените браузер, затем закажите буквально 2–3 новых номера стран из списка выше. Затем сообщите о результатах в чате.`,
+    en: `The error "This number can't be used for verification" is an internal system measure designed to prevent Google's service from being used with virtual numbers.
+
+Reasons:
+1. Multiple registration requests from the same IP and browser.
+2. Frequent use of incognito mode (not recommended, especially in Google Chrome).
+3. Uncleared cache and browser history.
+
+Please clear the cache and cookies of the Google website or switch browsers, then order 2-3 new numbers from the list of countries above. Then let me know the results in the chat.`,
+    tags: ["номер нельзя использовать для подтверждения", "google verification error", "this number can't be used", "инкогнито"],
+  },
+
+  // ===================== УДАЛЁННЫЙ АККАУНТ (доп.) =====================
+  {
+    id: "account-6",
+    category: "account",
+    title: "Уточнить дату последней покупки/пополнения",
+    ru: `Уточните, пожалуйста, когда в последний раз вы покупали номер или пополняли баланс на нашей платформе?`,
+    en: `Could you please clarify when you last purchased a number or topped up your balance on our platform?`,
+    tags: ["последняя покупка", "последнее пополнение", "last purchase date", "уточнить дату"],
+  },
+
+  // ===================== ПРОКСИ (доп.) =====================
+  {
+    id: "proxy-6",
+    category: "proxy",
+    title: "Сроки вывода средств по прокси",
+    ru: `Вывод средств по прокси занимает от 1 до 10 рабочих дней, ожидайте, пожалуйста, вывода в указанные сроки. Постараемся вывести быстрее.`,
+    en: `Withdrawal of proxy funds takes 1 to 10 business days, please expect the withdrawal within this timeframe. We will try to process it faster.`,
+    tags: ["вывод средств прокси", "proxy withdrawal", "сроки вывода", "1-10 рабочих дней"],
+  },
+
+  // ===================== УНИВЕРСАЛЬНЫЕ (доп.) =====================
+  {
+    id: "univ-5",
+    category: "universal",
+    title: "Почему не все страны доступны для новых сервисов",
+    ru: `Список стран номеров, которые представляется возможным добавить для новых сервисов, формируется из-за поставщиков номеров телефона.`,
+    en: `The list of number countries that can be added for new services is determined by our phone number suppliers.`,
+    tags: ["почему нет страны", "список стран поставщики", "новый сервис страны"],
+  },
+  {
+    id: "univ-6",
+    category: "universal",
+    title: "Реферальная программа",
+    ru: `У нас есть реферальная программа, которая позволяет зарабатывать и использовать заработанные средства для покупки номеров.
+
+Найти её можно здесь: https://onlinesim.io/v2/ref
+
+Просто скопируйте свою реферальную ссылку и поделитесь ею с друзьями, подписчиками или в соцсетях. Когда кто-то зарегистрируется по вашей ссылке и пополнит баланс OnlineSim, вы получите процент от его покупок прямо на свой реферальный баланс.
+
+После того как вы заработаете средства по реферальной программе, вы сможете использовать этот баланс для покупки номеров на OnlineSim.`,
+    en: `We have a referral program that allows you to earn money and use your earnings to buy numbers.
+
+You can find it here: https://onlinesim.io/v2/ref
+
+Simply copy your referral link and share it with your friends, subscribers, or on social media. When someone registers through your link and adds funds to their OnlineSim balance, you will receive a percentage of their purchases directly to your referral balance.
+
+Once you earn money through the referral program, you can use your balance to purchase numbers on OnlineSim.`,
+    tags: ["реферальная программа", "referral program", "реферальная ссылка", "заработать на рефералах"],
+  },
+
+  // ===================== TELEGRAM (доп.) =====================
+  {
+    id: "telegram-5",
+    category: "telegram",
+    title: "Только официальное приложение + топ стран",
+    ru: `Используйте, пожалуйста, только официальное мобильное приложение Telegram. Если вы использовали его ранее, очистите кэш и переустановите. Затем запросите 2–3 номера из списка стран для лучших результатов:
+🔗 Рекомендуемые страны для Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
+    en: `You must use only the official Telegram mobile app. If you have used it previously, clear the cache and reinstall it. Then, please request 2–3 numbers from the list of countries for the best results:
+🔗 View recommended countries for Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
+    tags: ["телеграм официальное приложение", "telegram official app", "топ стран телеграм", "рекомендуемые страны"],
+  },
+
+  // ===================== БЕСПЛАТНЫЕ НОМЕРА (доп.) =====================
+  {
+    id: "free-4",
+    category: "free-numbers",
+    title: "Номер архивирован",
+    ru: `Этот номер архивирован и не может быть использован. Пожалуйста, попробуйте другой доступный номер.`,
+    en: `This number is archived and cannot be used. Try please with another available one.`,
+    tags: ["номер архивирован", "archived number", "номер недоступен"],
+  },
+  {
+    id: "free-5",
+    category: "free-numbers",
+    title: "Где найти бесплатные номера и как получить код",
+    ru: `Бесплатные номера можно найти на главной странице нашего сайта: https://onlinesim.io/#try
+
+Вы можете выбрать любой доступный номер и использовать его для приёма СМС. Код появится под номером на главной странице.`,
+    en: `Free numbers can be found on our website's main page at https://onlinesim.io/#try
+
+You can pick any available one and use it for SMS receiving. The code will appear under the number on a main page.`,
+    tags: ["где бесплатные номера", "free numbers page", "главная страница номера", "получить код"],
   },
 ];

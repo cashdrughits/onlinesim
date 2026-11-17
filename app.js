@@ -1,15 +1,11 @@
-// =====================================================================
-// Логика сайта: поиск, фильтры, рендер, копирование, подстановка сервиса
-// =====================================================================
-
 (function () {
   "use strict";
 
   const state = {
     query: "",
-    activeCategory: "all", // "all" или id категории
-    activeLang: {},        // templateId -> "ru" | "en"
-    serviceValue: {},      // templateId -> текст сервиса
+    activeCategory: "all",
+    activeLang: {},
+    serviceValue: {},
   };
 
   const contentEl = document.getElementById("content");
@@ -80,7 +76,10 @@
 
   function updatePillStates() {
     categoryFiltersEl.querySelectorAll(".pill").forEach((pill) => {
-      pill.classList.toggle("active", pill.dataset.category === state.activeCategory);
+      pill.classList.toggle(
+        "active",
+        pill.dataset.category === state.activeCategory,
+      );
     });
   }
 
@@ -104,20 +103,13 @@
     render();
   });
 
-  // ---------------- Matching ----------------
-
   function normalize(str) {
     return (str || "").toLowerCase();
   }
 
   function matchesQuery(template, query) {
     if (!query) return true;
-    const haystacks = [
-      template.title,
-      template.ru,
-      template.en,
-      (template.tags || []).join(" "),
-    ].map(normalize);
+    const haystacks = [template.title, template.ru, template.en].map(normalize);
     return haystacks.some((h) => h.includes(query));
   }
 
@@ -212,7 +204,8 @@
       const input = document.createElement("input");
       input.type = "text";
       input.className = "service-input";
-      input.placeholder = "Название сервиса (например: WhatsApp, Telegram, Vinted)…";
+      input.placeholder =
+        "Название сервиса (например: WhatsApp, Telegram, Vinted)…";
       input.value = state.serviceValue[template.id] || "";
       input.addEventListener("input", function () {
         state.serviceValue[template.id] = input.value;
@@ -232,7 +225,9 @@
     tabs.querySelectorAll(".lang-tab").forEach((btn) => {
       btn.addEventListener("click", function () {
         state.activeLang[template.id] = btn.dataset.lang;
-        tabs.querySelectorAll(".lang-tab").forEach((b) => b.classList.remove("active"));
+        tabs
+          .querySelectorAll(".lang-tab")
+          .forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         updateTextPreview(card, template);
       });
@@ -254,17 +249,13 @@
     copyBtn.className = "copy-btn";
     copyBtn.innerHTML = copyIconHtml() + `<span>Копировать</span>`;
     copyBtn.addEventListener("click", function () {
-      const text = getResolvedText(template, state.activeLang[template.id] || "ru");
+      const text = getResolvedText(
+        template,
+        state.activeLang[template.id] || "ru",
+      );
       copyToClipboard(text, copyBtn);
     });
     actions.appendChild(copyBtn);
-
-    if (template.tags && template.tags.length) {
-      const tagEl = document.createElement("span");
-      tagEl.className = "tag-list";
-      tagEl.textContent = template.tags.join(" · ");
-      actions.appendChild(tagEl);
-    }
 
     body.appendChild(actions);
     card.appendChild(body);
@@ -291,7 +282,8 @@
     let text = lang === "en" ? template.en : template.ru;
     if (template.hasServicePlaceholder) {
       const serviceName = (state.serviceValue[template.id] || "").trim();
-      const placeholder = serviceName || (lang === "en" ? "[service]" : "[сервис]");
+      const placeholder =
+        serviceName || (lang === "en" ? "[service]" : "[сервис]");
       text = text.split("{{service}}").join(placeholder);
     }
     return text;
@@ -326,10 +318,13 @@
     };
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onSuccess).catch(function () {
-        fallbackCopy();
-        onSuccess();
-      });
+      navigator.clipboard
+        .writeText(text)
+        .then(onSuccess)
+        .catch(function () {
+          fallbackCopy();
+          onSuccess();
+        });
     } else {
       fallbackCopy();
       onSuccess();

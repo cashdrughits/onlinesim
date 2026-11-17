@@ -1,14 +1,3 @@
-// =====================================================================
-// Шаблоны ответов — onlinesim.io / onlineproxy.io
-// Редактируй этот файл, чтобы добавлять/менять шаблоны.
-// Каждый шаблон: { id, category, title, ru, en, tags, hasServicePlaceholder }
-//
-// hasServicePlaceholder: true -> в тексте есть {{service}}, сайт покажет
-// поле ввода и подставит название сервиса в обе версии текста.
-//
-// category — один из ключей CATEGORIES ниже.
-// =====================================================================
-
 const CATEGORIES = [
   { id: "refunds", name: "Возвраты", icon: "wallet" },
   { id: "sms-issues", name: "СМС не приходит", icon: "message-x" },
@@ -29,11 +18,10 @@ const CATEGORIES = [
   { id: "free-numbers", name: "Бесплатные номера", icon: "gift" },
   { id: "account", name: "Удалённый аккаунт / данные", icon: "user-x" },
   { id: "api", name: "API", icon: "code" },
+  { id: "errors", name: "Ошибки", icon: "alert-triangle" },
 ];
 
 const TEMPLATES = [
-
-  // ===================== БЕСПЛАТНЫЕ НОМЕРА =====================
   {
     id: "free-1",
     category: "free-numbers",
@@ -54,7 +42,6 @@ Also, because of many attempts by other users, SMS may not come, and an error ma
 Free numbers are updated once every 2 weeks.
 
 Subscribe to our Telegram group so you don't miss updates on new issues: https://t.me/onlinesimnewsen`,
-    tags: ["бесплатные номера", "публичные", "free numbers", "обновление номеров", "занят"],
   },
   {
     id: "free-2",
@@ -62,7 +49,6 @@ Subscribe to our Telegram group so you don't miss updates on new issues: https:/
     title: "Как увидеть код на бесплатном номере",
     ru: `Когда на номер приходит SMS, вы можете увидеть код прямо под номером. Рекомендуем обновить страницу, чтобы проверить наличие SMS.`,
     en: `When an SMS arrives to the number, you can see the code right under the number. We recommend refreshing the page to check for new SMS.`,
-    tags: ["код", "где увидеть код", "обновить страницу", "sms code"],
   },
   {
     id: "free-3",
@@ -78,17 +64,14 @@ Subscribe to our Telegram group so you don't miss updates on new issues: https:/
 You can get acquainted with the prices for our services on the main page or at the link: https://onlinesim.io/#price
 
 If you want to test whether our free numbers are working, try requesting an SMS from a less popular site or service.`,
-    tags: ["whatsapp бесплатный номер", "ватсап", "платные номера", "paid numbers"],
   },
 
-  // ===================== АРЕНДНЫЕ НОМЕРА =====================
   {
     id: "rent-1",
     category: "rent",
     title: "Что умеют арендные номера",
     ru: `Номера раздела «Аренда номера» предоставляют возможность приёма СМС и определение цифр номера входящего вызова.`,
     en: `Numbers in the "Number Rent" section provide the ability to receive SMS and identify the caller's phone number on incoming calls.`,
-    tags: ["аренда номера", "rent number", "входящий звонок", "определить номер"],
   },
   {
     id: "rent-2",
@@ -96,7 +79,6 @@ If you want to test whether our free numbers are working, try requesting an SMS 
     title: "Список стран для аренды — почему не все",
     ru: `Здравствуйте, в списке стран для арендных номеров находятся только те страны, которые представляется возможным пополнить на данный момент. О сроках добавления новых стран для арендных номеров подсказать не смогу.`,
     en: `Hello, the list of countries for rental numbers only includes those that we are currently able to restock. I'm unable to provide a timeframe for adding new countries for rental numbers.`,
-    tags: ["арендные номера страны", "нет страны", "аренда", "rent countries"],
   },
   {
     id: "rent-3",
@@ -108,7 +90,6 @@ If you want to test whether our free numbers are working, try requesting an SMS 
     en: `Hello, the "Other" service was unstable because the filters did not work reliably. They could either allow SMS from prohibited websites or block SMS entirely. We do not plan to bring this service back.
 
 There is an alternative — "Number Rent". These numbers have many advantages, including the option to extend the rental period, and they can receive SMS from any sender except prohibited ones (banks, telecom operators, government websites, etc.).`,
-    tags: ["other сервис", "number rent", "аренда номера альтернатива"],
   },
   {
     id: "rent-4",
@@ -116,10 +97,8 @@ There is an alternative — "Number Rent". These numbers have many advantages, i
     title: "Постоплатные номера — статуса нет",
     ru: `У нас нет информации о том, какие номера являются постоплатными, поэтому, пожалуйста, закажите новый номер. Средства списываются только после получения СМС.`,
     en: `We do not have information on which numbers are postpaid, so please order a new number. Funds are deducted only after the SMS is received.`,
-    tags: ["постоплата", "postpaid", "battle net"],
   },
 
-  // ===================== СМС НЕ ПРИХОДИТ =====================
   {
     id: "sms-1",
     category: "sms-issues",
@@ -130,7 +109,6 @@ There is an alternative — "Number Rent". These numbers have many advantages, i
     en: `You can close the number by clicking the red cross and take another one. Funds are only charged after the SMS is received.
 
 Sometimes SMS doesn't arrive on the first try for various technical reasons. Usually up to 5 attempts are enough to receive an SMS on a number. Please try ordering 3–4 more numbers from the list for better results.`,
-    tags: ["смс не приходит", "sms not coming", "5 попыток", "ещё номера"],
   },
   {
     id: "sms-2",
@@ -142,7 +120,6 @@ Sometimes SMS doesn't arrive on the first try for various technical reasons. Usu
     en: `Unfortunately, we do not have a service for receiving SMS again on numbers, and it's not technically possible either.
 
 We do not store used SIM cards — they are disposed of after their usage period ends. This information is also stated on our service.`,
-    tags: ["повторное смс", "ещё раз код", "второй код", "repeat sms"],
   },
   {
     id: "sms-3",
@@ -154,7 +131,6 @@ We do not store used SIM cards — they are disposed of after their usage period
     en: `Our numbers are able to receive 2 or more SMS, however receiving a second SMS is not guaranteed.
 
 {{service}}, like many other apps, has its own limits on sending SMS to users, so as not to overload the system with sending codes. That's why on a repeated request, the service may send the same code or not send it at all. A repeated SMS can also differ in format, which is why it may not arrive. An SMS was delivered to your number, so the service was provided, and no refund for the number is due.`,
-    tags: ["второе смс", "vinted второе смс", "второй код не пришёл", "second sms"],
     hasServicePlaceholder: true,
   },
   {
@@ -163,7 +139,6 @@ We do not store used SIM cards — they are disposed of after their usage period
     title: "Номер принял СМС — не основание для возврата",
     ru: `Добрый день, на этот номер вам удалось принять СМС, стало быть услуга была оказана. Утверждения «этот номер не подошёл» недостаточно для возврата средств, поскольку причина проблемы неясна. В данном случае вернуть средства за номер не получится.`,
     en: `Good day, you were able to receive an SMS on this number, which means the service was provided. The statement "this number didn't work" is not sufficient for a refund, since the reason for the problem is unclear. In this case, a refund for the number is not possible.`,
-    tags: ["смс пришло отказ в возврате", "номер не подошёл", "no refund sms received"],
   },
   {
     id: "sms-5",
@@ -175,11 +150,9 @@ We do not store used SIM cards — they are disposed of after their usage period
     en: `We do not recommend clicking the "Resend code" button many times, so that {{service}} doesn't stop sending the code.
 
 Clear the cache and cookies of the {{service}} website or switch browsers. Then request the next code in about 10–15 minutes on a new number. Switching to a mobile device may also help.`,
-    tags: ["много запросов кода", "resend code", "chatgpt код", "повторная отправка"],
     hasServicePlaceholder: true,
   },
 
-  // ===================== СЕРВИСЫ (WhatsApp / Telegram / др.) =====================
   {
     id: "svc-wa-1",
     category: "whatsapp",
@@ -196,7 +169,6 @@ For best results with {{service}} numbers, do the following:
 1. Clear the WhatsApp mobile app cache and reinstall it.
 2. Change your IP address using a proxy or VPN so that your IP country matches your phone number's country.
 3. Changing your device and registering for WhatsApp Business may also help.`,
-    tags: ["whatsapp немецкий номер", "ватсап рекомендации", "whatsapp security"],
     hasServicePlaceholder: true,
   },
   {
@@ -213,7 +185,6 @@ For best results with {{service}} numbers, do the following:
 This could happen if your location country doesn't match the phone number's country, or if you made many attempts from the same device, and so on.
 
 To avoid blocking in the future, I recommend: clearing the cache and reinstalling the WhatsApp mobile app, changing your IP address with a VPN (ideally matching the number's country), and not sending messages for 48 hours after registration.`,
-    tags: ["ватсап блок", "whatsapp block", "блокировка после регистрации", "не возвратный случай"],
   },
   {
     id: "svc-wa-3",
@@ -229,7 +200,6 @@ To avoid blocking in the future, I recommend: clearing the cache and reinstallin
 To reduce the risk of your account being blocked, I recommend the following: reinstall WhatsApp, use a paid VPN or proxy (free ones are often unreliable and their servers are frequently flagged), choose a location that matches the country of the number, and avoid sending messages during the first 2–7 days after registration.
 
 It is not technically possible to receive an SMS again, as the service does not support repeated use. Once the SMS has been received, the service is considered provided.`,
-    tags: ["ватсап блок развёрнутый", "whatsapp blocked detailed", "блок 24 часа"],
   },
   {
     id: "svc-wa-4",
@@ -241,7 +211,6 @@ It is not technically possible to receive an SMS again, as the service does not 
     en: `This is not normally a refundable case, but I will refund the money for this number to your balance.
 
 Before your next registration attempt, clear the WhatsApp app cache and reinstall it, then change your IP address using a paid VPN or proxy so that your location's country matches the phone number's country. After creating the new account, do not send messages from it for 48 hours.`,
-    tags: ["ватсап возврат исключение", "whatsapp refund exception", "верну деньги за номер"],
   },
   {
     id: "svc-wa-5",
@@ -257,7 +226,6 @@ Before your next registration attempt, clear the WhatsApp app cache and reinstal
 We have refunded the funds for this number.
 
 To better protect your WhatsApp account in the future, please link an email address and enable two-step verification (2FA) in WhatsApp settings.`,
-    tags: ["whatsapp номер вернулся оператору", "sim вернули в пул", "2fa whatsapp"],
   },
   {
     id: "svc-wa-6",
@@ -269,7 +237,21 @@ To better protect your WhatsApp account in the future, please link an email addr
     en: `We display only the codes sent by WhatsApp itself. An "invalid code" error is not related to the phone number itself; it is a standard response from WhatsApp's security system if it deems your registration activity suspicious.
 
 After each attempt, I recommend changing your IP address using a VPN or proxy matching the number's country, clearing the cache, and reinstalling the WhatsApp mobile app; this can reduce the risk of internal restrictions and increase the chances of a successful registration.`,
-    tags: ["whatsapp неверный код", "invalid code whatsapp", "антифрод whatsapp"],
+  },
+  {
+    id: "svc-wa-7",
+    category: "whatsapp",
+    title: "WhatsApp — немецкие номера, статистика не очень",
+    ru: `Я проверил статистику по немецким номерам, и, к сожалению, результаты не такие хорошие, как хотелось бы. СМС приходят нечасто по разным причинам.
+
+Могу порекомендовать другие страны и предоставить список лучших. Либо вы можете продолжать пробовать немецкие номера, если хотите, но мы не можем гарантировать успешный результат.
+
+Также рекомендую переустановить WhatsApp и использовать VPN или прокси, соответствующий стране номера, — это может повысить шансы на успешную регистрацию.`,
+    en: `I have checked the statistics for German numbers, and unfortunately, the results are not as good as we would like. SMS messages are received infrequently for various reasons.
+
+I can recommend other countries and provide you with a list of the best-performing ones. Alternatively, you can continue trying German numbers if you wish, but we cannot guarantee a successful result.
+
+I also recommend reinstalling WhatsApp and using a VPN or proxy matching the number's country, as this can increase your chances of successful registration.`,
   },
   {
     id: "svc-tg-1",
@@ -285,7 +267,6 @@ After each attempt, I recommend changing your IP address using a VPN or proxy ma
 1. Clear the cache and reinstall the official Telegram mobile app.
 2. If possible, change your IP address (using a VPN or proxy) so that the IP country matches the phone number's country.
 3. A short pause (about 20–30 minutes) before the next attempt may also help.`,
-    tags: ["телеграм звонит", "telegram calls instead of sms", "телеграм звонок"],
   },
   {
     id: "svc-tg-2",
@@ -297,7 +278,6 @@ After each attempt, I recommend changing your IP address using a VPN or proxy ma
     en: `Telegram asks for premium payment as a security measure if they detect suspicious activity.
 
 To stop Telegram from asking for premium payment, clear the cache and reinstall the Telegram mobile app. Then, if possible, change your IP address using a VPN or proxy.`,
-    tags: ["телеграм премиум", "telegram premium payment", "требует подписку"],
   },
   {
     id: "svc-tg-3",
@@ -313,7 +293,6 @@ To stop Telegram from asking for premium payment, clear the cache and reinstall 
 I recommend numbers from Turkey, Thailand, Poland, and the USA. Currently these are the best choice based on SMS delivery statistics — they arrive in 40–60% of cases, which is a good result. Order a couple of numbers and try to receive an SMS.
 
 If this happens again, I recommend reinstalling Telegram and changing your IP address with a VPN/proxy — this will reduce the risk of internal restrictions and increase your chances of registering.`,
-    tags: ["телеграм занятый номер", "telegram antifraud", "telegram номер занят"],
   },
   {
     id: "svc-tg-4",
@@ -321,7 +300,43 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
     title: "Telegram — привязка номера к существующему аккаунту дольше",
     ru: `Дело в том, что процесс привязки номера к уже существующему аккаунту Telegram всегда занимает чуть больше времени. Рекомендую запрашивать код в мобильном приложении Telegram, очистить кэш и переустановить его (убедитесь, что не потеряете доступ к аккаунту). Затем закажите несколько номеров из списка стран: Турция, Британия, Португалия, Ирландия, Польша.`,
     en: `The thing is, the process of linking a number to an already existing Telegram account always takes a bit more time. I recommend requesting the code in the Telegram mobile app, clearing the cache and reinstalling it (make sure you won't lose access to the account). Then order a few numbers from the list of countries: Turkey, UK, Portugal, Ireland, Poland.`,
-    tags: ["телеграм привязка номера", "telegram link number existing account", "смена номера телеграм"],
+  },
+  {
+    id: "svc-tg-5",
+    category: "telegram",
+    title: "Только официальное приложение + топ стран",
+    ru: `Используйте, пожалуйста, только официальное мобильное приложение Telegram. Если вы использовали его ранее, очистите кэш и переустановите. Затем запросите 2–3 номера из списка стран для лучших результатов:
+🔗 Рекомендуемые страны для Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
+    en: `You must use only the official Telegram mobile app. If you have used it previously, clear the cache and reinstall it. Then, please request 2–3 numbers from the list of countries for the best results:
+🔗 View recommended countries for Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
+  },
+  {
+    id: "svc-tg-6",
+    category: "telegram",
+    title: "Telegram — система безопасности по устройству и IP",
+    ru: `Дело в том, что Telegram имеет продвинутую систему безопасности, которая запоминает пользователей по устройству и IP-адресу и может прекратить отправку SMS-кодов после нескольких попыток входа в систему или если страна номера телефона не соответствует вашей геолокации.
+
+Для достижения наилучших результатов сделайте следующее:
+1. Очистите кэш мобильного приложения Telegram и переустановите его.
+2. Измените свой IP-адрес с помощью прокси-сервера или VPN, чтобы ваша страна IP соответствовала стране вашего номера телефона.
+3. Также может помочь смена устройства.
+
+Закажите несколько номеров, пожалуйста, стран из списка: Турция, Польша, Британия, Португалия. Если после выполнения рекомендаций результат останется прежним, дайте мне знать — переведу ваше обращение техническому специалисту.`,
+    en: `The thing is that Telegram has an advanced security system that remembers users by device and IP address and may stop sending SMS codes after several login attempts or if the phone number's country doesn't match your geolocation.
+
+For best results, do the following:
+1. Clear the Telegram mobile app cache and reinstall it.
+2. Change your IP address using a proxy or VPN so that your IP country matches your phone number's country.
+3. Changing your device may also help.
+
+Please order several numbers from the following list of countries: Turkey, Poland, UK, Portugal. If the result remains the same after following the recommendations, let me know — I'll forward your request to a technical specialist.`,
+  },
+  {
+    id: "svc-tg-7",
+    category: "telegram",
+    title: "Telegram — после неудачных попыток: кэш, переустановка, топ стран",
+    ru: `После неудачных попыток регистрации, пожалуйста, очистите кэш и переустановите мобильное приложение Telegram. Затем закажите ещё несколько номеров стран из списка, так как на них код приходит чаще: Турция, Польша, Британия, Португалия.`,
+    en: `After unsuccessful registration attempts, please clear the cache and reinstall the Telegram mobile app. Then order a few more numbers from the following list of countries, as the code arrives more often on them: Turkey, Poland, UK, Portugal.`,
   },
   {
     id: "svc-vinted-1",
@@ -329,7 +344,6 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
     title: "Vinted — общий совет",
     ru: `Очистите историю браузера, кэш и куки на сайте Vinted или смените браузер. Затем попробуйте 2–3 номера. Если результат остаётся неудачным, переключитесь на мобильное устройство и попробуйте зарегистрироваться в приложении Vinted.`,
     en: `Clear your browser history, cache, and cookies on the Vinted website or switch browsers. Then try 2-3 numbers. If the result remains unsuccessful, switch to a mobile device and try registering in the Vinted mobile app.`,
-    tags: ["vinted", "винтед совет"],
   },
   {
     id: "svc-vinted-2",
@@ -337,7 +351,6 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
     title: "Vinted — потерян доступ к номеру, блок аккаунта",
     ru: `Так как у вас больше нет доступа к телефонному номеру, рекомендую обратиться напрямую в поддержку Vinted, а не пытаться использовать другой временный номер. Объясните, что вы являетесь владельцем аккаунта, но номер, использованный для верификации, больше недоступен. Они могут запросить у вас информацию для подтверждения владения аккаунтом.`,
     en: `Since you no longer have access to the phone number, I would recommend contacting Vinted Support directly rather than trying to use another temporary number. Explain that you own the account but the number used for verification is no longer available. They may ask you for information to verify ownership of the account.`,
-    tags: ["vinted блок аккаунта", "vinted потерян доступ", "vinted support"],
   },
   {
     id: "svc-fb-1",
@@ -351,7 +364,6 @@ If this happens again, I recommend reinstalling Telegram and changing your IP ad
 🔗 View recommended countries for Facebook (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1734789313-best-countries-for-facebook)
 
 If result remains unsuccessful, switch device to PC/laptop and try to register in Facebook web version.`,
-    tags: ["facebook", "фейсбук совет"],
   },
   {
     id: "svc-bybit-1",
@@ -367,7 +379,6 @@ https://seed4me.app/ — хороший VPN, есть пробный перио�
 It's important to use a reliable VPN/proxy matching the number's country. I recommend trying to request the SMS again in a couple of hours.
 
 https://seed4me.app/ — a good VPN with a trial period.`,
-    tags: ["bybit", "байбит смс", "bybit sms geo"],
   },
   {
     id: "svc-viber-1",
@@ -391,7 +402,6 @@ Completely close Viber and open it again.
 Try requesting the activation code again.
 
 If possible, use a different Greek VPN server if the first one doesn't work.`,
-    tags: ["viber", "вайбер греция", "viber greece vpn"],
   },
   {
     id: "svc-google-1",
@@ -415,7 +425,6 @@ Use all available recovery options: a backup email, confirmation on another devi
 It's best to go through recovery from the phone or computer you used to regularly sign in to this account, and from your usual internet connection.
 
 Google itself determines which recovery methods are available for a specific account. If Google doesn't offer any method besides SMS to the old number, unfortunately we cannot bypass this restriction or reissue you the same number again.`,
-    tags: ["google восстановление", "google recovery", "старый номер гугл"],
   },
   {
     id: "svc-google-2",
@@ -423,7 +432,6 @@ Google itself determines which recovery methods are available for a specific acc
     title: "Google — СМС не приходит (веб-версия)",
     ru: `Эта ошибка связана с тем, что создать аккаунт Google через веб-версию сейчас крайне сложно. Рекомендую использовать мобильное устройство для создания аккаунта, а затем привязать номер телефона к нему. Также важно использовать IP страны того номера, который вы заказываете, при регистрации через веб-версию. Рекомендую номера Германии, Польши и Румынии.`,
     en: `This error is related to the fact that creating a Google account through the web version is currently extremely difficult. I recommend using a mobile device to create an account and then linking your phone number to it. It is also important to use the IP of the country of the number you are ordering when registering via the web version. I recommend using numbers from Germany, Poland, and Romania.`,
-    tags: ["google смс не приходит", "google sms not received", "гугл веб версия"],
   },
   {
     id: "svc-google-3",
@@ -435,7 +443,6 @@ Google itself determines which recovery methods are available for a specific acc
     en: `The situation where Google asks for a QR code instead of sending an SMS is related to Google considering your activity suspicious.
 
 To reduce the risk of internal restrictions and increase the chances of receiving an SMS from Google, I recommend changing your IP address using a VPN/proxy, choosing a country matching the number if possible, and using a different browser for registration.`,
-    tags: ["google qr код", "google qr code instead of sms"],
   },
   {
     id: "svc-yandex-1",
@@ -447,7 +454,6 @@ To reduce the risk of internal restrictions and increase the chances of receivin
     en: `Good day! We display only the codes sent by Yandex itself. The "invalid code" error is not related to the number itself. This is a standard reaction of Yandex's security system if it considers your registration actions suspicious.
 
 After each attempt, I recommend changing your IP address using a VPN/proxy matching the number's country and clearing cookies + browser history — this can reduce the risk of internal restrictions and increase the chances of successful registration.`,
-    tags: ["яндекс неверный код", "yandex invalid code"],
   },
   {
     id: "svc-vk-1",
@@ -459,7 +465,6 @@ After each attempt, I recommend changing your IP address using a VPN/proxy match
     en: `Receiving an SMS from VK can be problematic due to the specifics of their message delivery, which works reliably only with Russian numbers. SMS may not arrive at all to foreign numbers.
 
 I recommend numbers from Uzbekistan, Poland, Moldova, Latvia, Romania — according to statistics, SMS arrives in 30% of cases.`,
-    tags: ["вконтакте", "vk sms", "вк иностранный номер"],
   },
   {
     id: "svc-openai-1",
@@ -467,7 +472,6 @@ I recommend numbers from Uzbekistan, Poland, Moldova, Latvia, Romania — accord
     title: "OpenAI/ChatGPT отправляет код в WhatsApp",
     ru: `Чтобы OpenAI перестал отправлять код на WhatsApp, очистите кэш и куки сайта OpenAI либо смените браузер, затем закажите несколько новых номеров.`,
     en: `To stop OpenAI from sending the code to WhatsApp, clear the cache and cookies of the OpenAI website or switch browsers, then order a few new numbers.`,
-    tags: ["openai whatsapp код", "chatgpt код в whatsapp"],
   },
   {
     id: "svc-ontaxi-1",
@@ -479,7 +483,6 @@ I recommend numbers from Uzbekistan, Poland, Moldova, Latvia, Romania — accord
     en: `I see you've ordered many numbers for OnTaxi. Let me explain why we recommend reinstalling the app and changing your IP address. OnTaxi, like other major apps, has a security system that can stop sending codes after multiple login attempts from the same device and IP address.
 
 So we recommend clearing the cache and reinstalling the app, then changing your IP address using a proxy or VPN. Please follow the recommendations and order 3-4 numbers. If the result remains the same, let me know and I'll forward your request to a technical specialist.`,
-    tags: ["ontaxi", "онтакси много номеров"],
   },
   {
     id: "svc-battlenet-1",
@@ -487,17 +490,21 @@ So we recommend clearing the cache and reinstalling the app, then changing your 
     title: "Battle.net — постоплата",
     ru: `У нас нет информации о том, какие номера являются постоплатными, поэтому, пожалуйста, закажите новый номер. Средства списываются только после получения СМС.`,
     en: `We do not have information on which numbers are postpaid, so please order a new number. Funds are deducted only after the SMS is received.`,
-    tags: ["battle net", "battlenet постоплата"],
+  },
+  {
+    id: "svc-hh-1",
+    category: "other-services",
+    title: "HH.ru — почему убрали и почему СМС не приходят",
+    ru: `Стало проблематично получать СМС от HH из-за специфики их рассылки сообщений, которая стабильно работает только на российских номерах. На иностранные номера СМС перестали поступать вовсе.`,
+    en: `It has become problematic to receive SMS from HH due to the specifics of their message delivery, which works reliably only with Russian numbers. SMS has stopped arriving to foreign numbers altogether.`,
   },
 
-  // ===================== УНИВЕРСАЛЬНЫЕ ОТВЕТЫ =====================
   {
     id: "univ-1",
     category: "universal",
     title: "Общая инструкция: кэш + VPN + смена устройства",
     ru: `Очистите историю браузера, кэш и куки на сайте {{service}} или смените браузер. Затем попробуйте заказать 2–3 номера. Если результат остаётся неудачным, переключитесь на мобильное устройство и попробуйте зарегистрироваться в мобильном приложении {{service}}.`,
     en: `Clear your browser history, cache, and cookies on the {{service}} website or switch browsers. Then try to order 2-3 numbers please. If the result remains unsuccessful, switch to a mobile device and try registering in the {{service}} mobile app.`,
-    tags: ["универсальный ответ", "кэш куки vpn", "общая инструкция", "generic troubleshooting"],
     hasServicePlaceholder: true,
   },
   {
@@ -516,7 +523,6 @@ So we recommend clearing the cache and reinstalling the app, then changing your 
 2. Change your IP address or reconnect (depending on how it was set up) using a VPN to any European location.
 3. Install {{service}}.
 4. Order a number, preferably from the countries I recommend, and try up to 5 numbers.`,
-    tags: ["поэтапная инструкция", "step by step vpn", "40-60%", "кэш удалить установить"],
     hasServicePlaceholder: true,
   },
   {
@@ -525,7 +531,6 @@ So we recommend clearing the cache and reinstalling the app, then changing your 
     title: "Заблюренный/незапрещённый сервис в списке — добавим",
     ru: `Ваш запрос уже обрабатывается. Мы проверим этот сайт и добавим номера из разных стран. Это может занять до 48 часов. Как только всё будет готово, я или мой коллега сообщим вам в этом чате. Пожалуйста, подождите.`,
     en: `Your request is already being processed. We will check this website and add numbers from different countries. This may take up to 48 hours. Once it is ready, I or my colleague will let you know in this chat. Please wait.`,
-    tags: ["сервис не в списке", "заблюренный сервис", "добавить сервис", "48 часов"],
   },
   {
     id: "univ-4",
@@ -533,10 +538,8 @@ So we recommend clearing the cache and reinstalling the app, then changing your 
     title: "Просьба не писать повторно во время обработки",
     ru: `Пожалуйста, дождитесь моего ответа, так как обращения обрабатываются в индивидуальном порядке, и отправка нескольких сообщений подряд только увеличивает время ответа.`,
     en: `Please wait for my reply, since requests are handled on an individual basis, sending multiple messages only increases the response time.`,
-    tags: ["дождитесь ответа", "не пишите повторно", "please wait"],
   },
 
-  // ===================== ПРОКСИ =====================
   {
     id: "proxy-1",
     category: "proxy",
@@ -553,7 +556,6 @@ You can upload your proxies to our website using an API key from one of these pr
 
 https://onlineproxy.io/manual/ways-to-earn-money/how-to-earn-with-mobile-proxies
 https://onlineproxy.io/manual/ways-to-earn-money/how-to-sell-your-proxies-on-onlineproxy`,
-    tags: ["партнёрство прокси", "продать прокси", "proxy partner", "ltespace iproxy mobilespace"],
   },
   {
     id: "proxy-2",
@@ -574,7 +576,6 @@ Please also send me a screenshot of your proxy settings/configuration. You can h
 Let me know which browser or application you are using and where you configured the proxy.
 
 This will help me confirm whether the proxy is actually being used and investigate why your external IP is not changing.`,
-    tags: ["ip не применился", "прокси проверка ip", "ipinfo.io", "socks5"],
     hasServicePlaceholder: true,
   },
   {
@@ -583,7 +584,6 @@ This will help me confirm whether the proxy is actually being used and investiga
     title: "Ротация IP у приватного прокси",
     ru: `Если приобретёте ещё один приватный прокси, то IP будет постоянно разным. IP будет меняться в зависимости от интервала, который вы укажете. Также он не будет совпадать с IP-адресом первого приватного прокси, который вы приобрели ранее.`,
     en: `If you purchase another private proxy, the IP will be constantly different. The IP will change depending on the interval you specify. It also will not match the IP address of the first private proxy you purchased earlier.`,
-    tags: ["ротация ip", "ip rotation", "приватный прокси интервал"],
   },
   {
     id: "proxy-4",
@@ -595,7 +595,6 @@ This will help me confirm whether the proxy is actually being used and investiga
     en: `"This proxy's details were changed more than 3 hours ago."
 
 I removed this notice — most likely the connection details were changed earlier or the equipment was replaced. I can see that your proxy is working now.`,
-    tags: ["прокси данные изменены", "плашка прокси", "proxy details changed notice"],
   },
   {
     id: "proxy-5",
@@ -603,17 +602,14 @@ I removed this notice — most likely the connection details were changed earlie
     title: "Запрос деталей ошибки прокси",
     ru: `Уточните, пожалуйста, через какое приложение/браузер вы подключаетесь? Также предоставьте скриншот ошибки, пожалуйста.`,
     en: `Could you please clarify which app/browser you're connecting through? Please also provide a screenshot of the error.`,
-    tags: ["прокси ошибка скриншот", "какое приложение прокси", "proxy error details"],
   },
 
-  // ===================== ПОПОЛНЕНИЕ БАЛАНСА =====================
   {
     id: "topup-1",
     category: "topup",
     title: "СБП и российские карты отключены",
     ru: `Здравствуйте, мы отключили оплату по СБП и с помощью российских банковских карт, но вы можете оплатить, используя другие доступные способы оплаты: криптовалюта (USDT, USDC), электронные кошельки (Apple Pay, Google Pay).`,
     en: `Hello, we have disabled payment via SBP and Russian bank cards, but you can pay using other available payment methods: cryptocurrency (USDT, USDC), e-wallets (Apple Pay, Google Pay).`,
-    tags: ["сбп отключен", "российские карты", "способы оплаты", "payment methods disabled"],
   },
   {
     id: "topup-2",
@@ -625,7 +621,6 @@ I removed this notice — most likely the connection details were changed earlie
     en: `The payment was declined by the payment provider's automated risk-check system. This doesn't necessarily mean there's a problem with the card or its balance.
 
 If Bank Cards Extra and Global Card Payment also don't work, please let us know in the chat.`,
-    tags: ["платеж отклонен", "payment declined", "bank cards extra", "global card payment"],
   },
   {
     id: "topup-3",
@@ -651,7 +646,6 @@ Unfortunately, if the payment did not go through, you will not be able to pay wi
 In this case, please try paying with cryptocurrency if you have that option. When topping up via TRC20, the minimum amount is $3, and the fee is only 3%. At the moment, this is one of the most cost-effective top-up methods.
 
 If you don't have a crypto wallet, you can create one on any exchange, for example Bybit. There are plenty of guides on this topic online.`,
-    tags: ["отказ карты подробно", "card declined detailed", "trc20", "bybit кошелек"],
   },
   {
     id: "topup-4",
@@ -671,7 +665,6 @@ Unfortunately, we cannot influence or approve the payment.
 If it's not possible to pay with another card, I recommend using cryptocurrency—it's even more advantageous. When topping up via TRC20, the minimum amount starts at $3, and the fee is just 3%.
 
 If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
-    tags: ["nigerian bank cards", "нигерийская карта отказ", "card declined nigeria"],
   },
   {
     id: "topup-5",
@@ -679,7 +672,6 @@ If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
     title: "Платёж не завершён — деньги не списаны",
     ru: `Здравствуйте. При пополнении баланса каждая попытка платежа фиксируется. Поэтому, если вы выбрали способ оплаты, но не завершили процесс платежа, этот платёж останется «в процессе», и деньги списаны не будут.`,
     en: `Hello. When topping up your account balance, every payment attempt is recorded. Therefore, if you selected a method but did not complete the payment process, this payment will remain "in progress" and no funds will be charged.`,
-    tags: ["платеж не завершен", "payment in progress", "деньги не списались"],
   },
   {
     id: "topup-6",
@@ -687,7 +679,6 @@ If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
     title: "Как списывается оплата за номер (заморозка баланса)",
     ru: `Вы платите только за полученные СМС. При заказе номера его стоимость временно резервируется (попадает в «Замороженный баланс»). Если СМС пришло — деньги списываются. Если нет — после отмены операции с номером либо по истечении времени вся сумма сразу возвращается на ваш баланс.`,
     en: `You only pay for SMS you actually receive. When you order a number, its cost is temporarily reserved (goes into the "Frozen balance"). If the SMS arrives, the money is deducted. If not — after cancelling the number or once the time expires, the full amount is immediately returned to your balance.`,
-    tags: ["замороженный баланс", "frozen balance", "как списывается оплата", "резерв средств"],
   },
   {
     id: "topup-7",
@@ -705,7 +696,6 @@ If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
 2. Whether you have previously used this card on our platform.
 3. Whether the card is a debit or credit card.
 4. Whether the card is physical or virtual.`,
-    tags: ["данные карты для техподдержки", "card details request", "запрос данных карты"],
   },
   {
     id: "topup-8",
@@ -713,7 +703,6 @@ If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
     title: "Раздел «Выписка» — расходы и возвраты",
     ru: `В разделе «Выписка» можете посмотреть все номера, на которые было принято СМС и списана плата: https://onlinesim.io/v2/ru/checkout`,
     en: `In the "Statement" section, all expenses and refunds for numbers are displayed. Information on spending is available at the link: https://onlinesim.io/v2/checkout`,
-    tags: ["выписка", "statement", "история списаний", "checkout"],
   },
   {
     id: "topup-9",
@@ -721,7 +710,6 @@ If you don't have a crypto wallet, you can create one on the Bybit exchange.`,
     title: "Автопополнение через API не поддерживается",
     ru: `На данный момент автоматическое пополнение баланса через API не поддерживается, пополнение производится вручную через личный кабинет.`,
     en: `At the moment, automatic balance top-up via API is not supported; top-up is done manually through the personal account.`,
-    tags: ["автопополнение api", "api topup not supported"],
   },
   {
     id: "topup-10",
@@ -745,7 +733,18 @@ For cryptocurrency payments:
 For bank cards / e-wallets:
 — Average crediting time: up to 20 minutes.
 — We request a screenshot from the banking app or a PDF document of the payment confirming the transaction.`,
-    tags: ["проверка оплаты", "payment verification", "hashid txid", "незачисление средств"],
+  },
+
+  {
+    id: "topup-11",
+    category: "topup",
+    title: "Карта отклонена как высокорискованная",
+    ru: `Платёжная система может отклонять карты, которые считает высокорискованными. Причины отказа нам не сообщаются, и мы не можем повлиять на решение платёжной системы, к сожалению.
+
+Рекомендую воспользоваться другой картой либо оплатить криптовалютой.`,
+    en: `The payment system may decline cards it considers high-risk. We are not informed of the reasons for the decline, and unfortunately we cannot influence the payment system's decision.
+
+I recommend using a different card or paying with cryptocurrency.`,
   },
 
   // ===================== УДАЛЁННЫЙ АККАУНТ / ДАННЫЕ =====================
@@ -759,7 +758,6 @@ For bank cards / e-wallets:
     en: `I understand your frustration, especially since your account had funds and you need the phone history. However, according to our data retention policy, all account data is permanently deleted after 30 days of inactivity and cannot be restored or retrieved.
 
 We notify users about the upcoming deletion by email 7, 3, and 1 day in advance, and we also display relevant warnings during registration and when topping up the balance.`,
-    tags: ["удаление аккаунта", "account deleted inactivity", "история номеров не выдается", "30 дней"],
   },
   {
     id: "account-2",
@@ -771,7 +769,6 @@ We notify users about the upcoming deletion by email 7, 3, and 1 day in advance,
     en: `According to our service rules, if no purchase and SMS reception on at least one number, or no balance top-up occurs within 30 days, the account is deleted along with the SMS history and payment data. We send emails about the upcoming deletion 7, 3, and 1 day in advance. There is also a warning banner on the balance top-up page.
 
 However, we can withdraw the money from your balance. Please send a screenshot of the top-up payment from your banking app, or a PDF receipt, or if you topped up with cryptocurrency, send the transaction hash ID, wallet address, and the top-up network.`,
-    tags: ["правило 30 дней", "30 days inactivity rule", "удаление истории смс"],
   },
   {
     id: "account-3",
@@ -779,7 +776,6 @@ However, we can withdraw the money from your balance. Please send a screenshot o
     title: "Вывод средств с удалённого аккаунта — что нужно",
     ru: `Мы можем вывести средства с баланса. Нам понадобится: почта, которая была на аккаунте, а также номер телефона, который вы покупали хотя бы один раз, и для какого сервиса вы его покупали. Либо ID удалённого аккаунта — его можно найти в письме, которое мы отправляли вам при пополнении баланса на платформе.`,
     en: `We can withdraw funds from the balance. We will need: the email that was on the account, as well as a phone number you purchased at least once and which service it was for. Alternatively, the ID of the deleted account — it can be found in the email we sent you when you topped up your balance on the platform.`,
-    tags: ["вывод средств удаленный аккаунт", "withdraw deleted account", "id удаленного аккаунта"],
   },
   {
     id: "account-4",
@@ -791,7 +787,6 @@ However, we can withdraw the money from your balance. Please send a screenshot o
     en: `To transfer funds, for security reasons, you must write from two accounts indicating the id from which you want to transfer funds to the id to which you want to receive funds.
 It is important that the text is the same.
 For example: "Transfer funds from account id7338945 to id7838185". So also write please from the second account. Thank you for your understanding.`,
-    tags: ["перевод средств между аккаунтами", "transfer funds between accounts", "подтверждение перевода"],
   },
   {
     id: "account-5",
@@ -799,7 +794,6 @@ For example: "Transfer funds from account id7338945 to id7838185". So also write
     title: "Email не на Proton — уведомления работают некорректно",
     ru: `Дело в том, что рассылка писем не совсем корректно работает с почтовыми ящиками Proton. Рекомендую использовать почту с другим доменом, например Gmail, Outlook и другие.`,
     en: `The email notifications don't work quite correctly with the Proton domain. I can replace the email on your account, please send me your Gmail address.`,
-    tags: ["proton почта", "proton mail issues", "уведомления не приходят"],
   },
 
   // ===================== API =====================
@@ -809,7 +803,6 @@ For example: "Transfer funds from account id7338945 to id7838185". So also write
     title: "Ссылка на документацию API",
     ru: `С документацией API можно ознакомиться по ссылке: https://onlinesim.io/openapi_docs/Onlinesim-API-UN/info`,
     en: `You can get acquainted with API docs by the link: https://onlinesim.io/openapi_docs/Onlinesim-API-UN/info`,
-    tags: ["api документация", "api docs", "openapi"],
   },
   {
     id: "api-2",
@@ -817,7 +810,62 @@ For example: "Transfer funds from account id7338945 to id7838185". So also write
     title: "Автопополнение через API не поддерживается",
     ru: `На данный момент автоматическое пополнение баланса через API не поддерживается, пополнение производится вручную через личный кабинет.`,
     en: `At the moment, automatic balance top-up via API is not supported; top-up is done manually through the personal account.`,
-    tags: ["api автопополнение", "api topup unsupported"],
+  },
+
+  {
+    id: "api-3",
+    category: "api",
+    title: "Лимиты API: 1 запрос/сек, 60/мин",
+    ru: `Наше API имеет ограничение запросов: 1 запрос в секунду и не более 60 в минуту. Попробуйте повторить запросы через 1 час. Вчера я проверял запрос, который мой коллега отправил вам выше, и номера покупались корректно.`,
+    en: `Our API has a request limit: 1 request per second and no more than 60 per minute. Please try making requests again in 1 hour. Yesterday I checked the request my colleague sent you above, and numbers were being purchased correctly.`,
+  },
+  {
+    id: "api-4",
+    category: "api",
+    title: "Поиск сервиса по slug через filter_service",
+    ru: `Попробуйте найти {{service}} через параметр filter_service={{slug}} и проверьте, что в запросе getTariffs.php используются все страницы ответа.
+Правильное название сервиса (slug) для покупки через API — {{slug}}. При заказе через getNum.php передавайте его в параметре service.`,
+    en: `Try to find {{service}} using the filter_service={{slug}} parameter and make sure that all response pages are used in the getTariffs.php request.
+The correct service name (slug) for purchasing via API is {{slug}}. When ordering via getNum.php, pass it in the service parameter.`,
+    hasServicePlaceholder: true,
+  },
+  {
+    id: "api-5",
+    category: "api",
+    title: "Документация API и получение ключа",
+    ru: `Подробную информацию о нашем API, включая доступные методы и инструкции по интеграции, вы можете найти в документации:
+https://onlinesim.io/openapi_docs/Onlinesim-API-UN/info
+
+Чтобы получить персональный API-ключ, перейдите в настройки API:
+https://onlinesim.io/v2/profile/api`,
+    en: `You can find detailed information about our API, including available methods and integration instructions, in our API documentation:
+https://onlinesim.io/openapi_docs/Onlinesim-API-UN/info
+
+To get your personal API key, please visit your API settings:
+https://onlinesim.io/v2/profile/api`,
+  },
+  {
+    id: "api-6",
+    category: "api",
+    title: "IP в бане — запрос данных для проверки",
+    ru: `Пожалуйста, предоставьте следующую информацию, чтобы мы могли разобраться в проблеме:
+
+— Время возникновения ошибки (по московскому времени):
+— Ваш IP-адрес:
+— Устройство:
+— Браузер и его версия: Google Chrome, Safari, Brave, Opera или Edge.
+— Укажите, какой VPN вы используете.
+
+Также вы можете попробовать сменить локацию VPN и использовать другой браузер. Иногда это помогает решить проблему.`,
+    en: `Please provide the following information so we can investigate the issue:
+
+— Time when the error occurred (Moscow time):
+— Your IP address:
+— Device:
+— Browser and its version: Google Chrome, Safari, Brave, Opera, or Edge.
+— Please specify which VPN you are using.
+
+You can also try changing your VPN location and using a different browser. Sometimes this helps resolve the issue.`,
   },
 
   // ===================== ВОЗВРАТЫ =====================
@@ -827,7 +875,6 @@ For example: "Transfer funds from account id7338945 to id7838185". So also write
     title: "Отказ в возврате — номер принял СМС",
     ru: `Добрый день, на этот номер вам удалось принять СМС, стало быть услуга была оказана. Утверждения «этот номер не подошёл» недостаточно для возврата средств, поскольку причина проблемы неясна. В данном случае вернуть средства за номер не получится.`,
     en: `Good day, you were able to receive an SMS on this number, which means the service was provided. The statement "this number didn't work" is not sufficient for a refund, since the reason for the problem is unclear. In this case, a refund for the number is not possible.`,
-    tags: ["отказ в возврате", "refund denied", "смс пришло не возврат"],
   },
   {
     id: "refund-2",
@@ -839,7 +886,6 @@ For example: "Transfer funds from account id7338945 to id7838185". So also write
     en: `This is not a refundable case, as we are not responsible for account blocks after registration — a block issued after registration does not confirm a problem with the number.
 
 This could happen if your location country doesn't match the phone number's country, or if you made many attempts from the same device, and so on.`,
-    tags: ["блокировка не возвратный случай", "block not refundable", "отказ возврат блокировка"],
   },
   {
     id: "refund-3",
@@ -847,7 +893,6 @@ This could happen if your location country doesn't match the phone number's coun
     title: "Возврат как исключение (после нескольких предыдущих)",
     ru: `Это не возвратный случай, но я верну тебе деньги за этот номер на твой баланс. Перед следующей попыткой регистрации очисти кэш приложения {{service}} и переустанови его, затем смени IP-адрес при помощи платного VPN или прокси, чтобы страна твоего местоположения совпадала со страной номера телефона. После создания нового аккаунта не отправляй сообщения с него в течение 48 часов.`,
     en: `This is not normally a refundable case, but I will refund the money for this number to your balance. Before your next registration attempt, clear the {{service}} app cache and reinstall it, then change your IP address using a paid VPN or proxy so that your location's country matches the phone number's country. After creating the new account, do not send messages from it for 48 hours.`,
-    tags: ["возврат исключение", "refund as exception", "верну деньги за номер"],
     hasServicePlaceholder: true,
   },
   {
@@ -864,7 +909,6 @@ This could happen if your location country doesn't match the phone number's coun
 To prevent this from happening again, please follow the recommendations provided above. We are not responsible for account blocks or logouts during or after registration. By using our service, you agree to our rules.
 
 The service is considered provided once the SMS is received, as we do not provide a registration service - further actions depend on the user.`,
-    tags: ["отказ повторный возврат", "no more refunds exception used", "уже возвращали"],
   },
   {
     id: "refund-5",
@@ -872,7 +916,6 @@ The service is considered provided once the SMS is received, as we do not provid
     title: "Отказ по карте — не наша ответственность",
     ru: `К сожалению, эквайринговая система не объясняет причину отказа карты. У нас нет возможности подтвердить или отклонить платёж. Рекомендую использовать другую карту или криптовалюту для пополнения баланса — это даже выгоднее, так как минимальный платёж через TRC20 составляет $3, а комиссия всего 3%.`,
     en: `Unfortunately, the acquiring system does not explain the reason for the card decline. We do not have the ability to approve or decline payments. I recommend using a different card or cryptocurrency to top up your balance — it is even more advantageous, as the minimum payment via TRC20 is $3, and the commission is only 3%.`,
-    tags: ["отказ карты не наша ответственность", "card decline not our fault"],
   },
   {
     id: "refund-6",
@@ -880,10 +923,42 @@ The service is considered provided once the SMS is received, as we do not provid
     title: "Возврат оформлен — средства на баланс",
     ru: `Вернул вам средства за номер на баланс.`,
     en: `I have refunded the funds for the number to your balance.`,
-    tags: ["возврат оформлен", "refund completed", "деньги на балансе"],
   },
 
-  // ===================== GOOGLE (доп.) =====================
+  {
+    id: "refund-7",
+    category: "refunds",
+    title: "Спам-блок Telegram не связан с номером",
+    ru: `Спам-блок на созданном аккаунте не связан с номером телефона, который вы использовали при регистрации. Если аккаунт чистый и нет других переписок, то это просто система Telegram, которая ограничивает спам с только что созданных аккаунтов.
+
+Рекомендую вам подождать 2–4 дня — спам-блок должен сняться. Возврат средств за то, что на номере спам-блок, не производится.`,
+    en: `A spam block on a newly created account is not related to the phone number you used during registration. If the account is clean and has no other conversations, this is simply Telegram's system that restricts spam from newly created accounts.
+
+I recommend waiting 2–4 days — the spam block should be lifted. Refunds are not issued because of a spam block on the number.`,
+  },
+  {
+    id: "refund-8",
+    category: "refunds",
+    title: "Номер переиздан оператором новому владельцу",
+    ru: `Это происходит на стороне мобильного оператора, независимо от нашего сервиса. По истечении определённого периода неактивности оператор может повторно назначить номер новому владельцу.
+
+Таким образом, другой человек мог купить этот номер непосредственно у мобильного оператора.`,
+    en: `This happens on the mobile operator's side, independently of our service. After a certain period of inactivity, the operator may reassign the number to a new owner.
+
+So another person could have purchased this number directly from the mobile operator.`,
+  },
+  {
+    id: "refund-9",
+    category: "refunds",
+    title: "WhatsApp Business restriction — non-refundable",
+    ru: `Номер был куплен вчера, и WhatsApp ограничил аккаунт в тот же день. На скриншоте видно, что это ограничение безопасности WhatsApp Business и что вы можете запросить официальное рассмотрение.
+
+Пожалуйста, нажмите «Request a review» и дождитесь решения WhatsApp, обычно в течение 24 часов. Ограничение было наложено WhatsApp, поэтому покупка возврату не подлежит — возврат средств не будет произведён.`,
+    en: `The number was purchased yesterday and WhatsApp restricted the account on the same day. The screenshot shows that this is a WhatsApp Business security restriction and that you can request an official review.
+
+Please tap "Request a review" and wait for WhatsApp's decision, usually within 24 hours. The restriction was imposed by WhatsApp, so the purchase is non-refundable and no refund will be issued.`,
+  },
+
   {
     id: "google-4",
     category: "google",
@@ -904,37 +979,82 @@ Reasons:
 3. Uncleared cache and browser history.
 
 Please clear the cache and cookies of the Google website or switch browsers, then order 2-3 new numbers from the list of countries above. Then let me know the results in the chat.`,
-    tags: ["номер нельзя использовать для подтверждения", "google verification error", "this number can't be used", "инкогнито"],
   },
 
-  // ===================== УДАЛЁННЫЙ АККАУНТ (доп.) =====================
   {
     id: "account-6",
     category: "account",
     title: "Уточнить дату последней покупки/пополнения",
     ru: `Уточните, пожалуйста, когда в последний раз вы покупали номер или пополняли баланс на нашей платформе?`,
     en: `Could you please clarify when you last purchased a number or topped up your balance on our platform?`,
-    tags: ["последняя покупка", "последнее пополнение", "last purchase date", "уточнить дату"],
   },
 
-  // ===================== ПРОКСИ (доп.) =====================
+  {
+    id: "account-7",
+    category: "account",
+    title: "Уточнение даты покупки и проверка аккаунта",
+    ru: `Подскажите, пожалуйста, когда в последний раз вы покупали номер или пополняли баланс? Также убедитесь, что вошли в нужный аккаунт с правильной почтой.`,
+    en: `Could you please tell me when you last purchased a number or topped up your balance? Also, please make sure you are logged into the correct account with the correct email.`,
+  },
+  {
+    id: "account-8",
+    category: "account",
+    title: "Удаление записей об использовании через 30 дней (раздел 11)",
+    ru: `Согласно разделу 11 наших Условий предоставления услуг, записи об использовании сервиса — включая IP-адреса, сведения об устройствах, обращения в службу поддержки и соответствующую переписку — безвозвратно удаляются через 30 дней с момента их создания.`,
+    en: `According to Section 11 of our Terms of Service, records of service usage — including IP addresses, device information, support requests and related correspondence — are permanently deleted 30 days after their creation.`,
+  },
+  {
+    id: "account-9",
+    category: "account",
+    title: "Что остаётся после удаления: только история транзакций",
+    ru: `Остаётся только история транзакций и информация о пополнениях — связано это с бухгалтерией, налогами и на случай платёжных споров. Данные банковских карт обрабатываются платёжными провайдерами, поэтому мы не имеем к ним доступа. Вся информация, кроме истории транзакций, удаляется необратимо.`,
+    en: `Only the transaction history and top-up information remain — this is due to accounting, tax requirements, and potential payment disputes. Bank card data is processed by payment providers, so we do not have access to it. All information except transaction history is permanently deleted.`,
+  },
+  {
+    id: "account-10",
+    category: "account",
+    title: "Аккаунт разморожен — вход и смена почты",
+    ru: `Ваш аккаунт разморожен, вы можете войти, используя прежние учётные данные.
+
+Если вы хотите изменить адрес электронной почты, напишите нам в чат, войдя в свой аккаунт.`,
+    en: `Your account has been unfrozen, and you can log in using your previous credentials.
+
+If you would like to change your email address, please contact us via chat while logged in to your account.`,
+  },
+
   {
     id: "proxy-6",
     category: "proxy",
     title: "Сроки вывода средств по прокси",
     ru: `Вывод средств по прокси занимает от 1 до 10 рабочих дней, ожидайте, пожалуйста, вывода в указанные сроки. Постараемся вывести быстрее.`,
     en: `Withdrawal of proxy funds takes 1 to 10 business days, please expect the withdrawal within this timeframe. We will try to process it faster.`,
-    tags: ["вывод средств прокси", "proxy withdrawal", "сроки вывода", "1-10 рабочих дней"],
   },
 
-  // ===================== УНИВЕРСАЛЬНЫЕ (доп.) =====================
+  {
+    id: "proxy-7",
+    category: "proxy",
+    title: "Подключение через партнёров, рекомендация IProxy для телефонов",
+    ru: `Здравствуйте, да, конечно. Мы поддерживаем подключение к нам через 3 партнёров: LTEspace, MobileProxySpace и IProxy. После размещения прокси у наших партнёров вы можете через API-ключ перенести их к нам и начать продавать.
+
+Так как у вас именно телефоны, рекомендую подключиться через IProxy, так как у них есть мобильное приложение для создания прокси.`,
+    en: `Hello, yes, of course. We support connections through 3 partners: LTEspace, MobileProxySpace, and IProxy. After placing proxies with our partners, you can transfer them to us via API key and start selling.
+
+Since you specifically have phones, I recommend connecting through IProxy, as they have a mobile app for creating proxies.`,
+  },
+  {
+    id: "proxy-8",
+    category: "proxy",
+    title: "Реальные мобильные IP тайских операторов",
+    ru: `Наши прокси используют подлинные мобильные IP-адреса, предоставляемые местными тайскими мобильными операторами через реальные SIM-карты. Это не дата-центровые и не арендованные хостинговые IP.`,
+    en: `Regarding IP ownership, our proxies use genuine mobile IP addresses provided by local Thai mobile carriers through real SIM cards. They are not datacenter or leased hosting IPs.`,
+  },
+
   {
     id: "univ-5",
     category: "universal",
     title: "Почему не все страны доступны для новых сервисов",
     ru: `Список стран номеров, которые представляется возможным добавить для новых сервисов, формируется из-за поставщиков номеров телефона.`,
     en: `The list of number countries that can be added for new services is determined by our phone number suppliers.`,
-    tags: ["почему нет страны", "список стран поставщики", "новый сервис страны"],
   },
   {
     id: "univ-6",
@@ -954,29 +1074,14 @@ You can find it here: https://onlinesim.io/v2/ref
 Simply copy your referral link and share it with your friends, subscribers, or on social media. When someone registers through your link and adds funds to their OnlineSim balance, you will receive a percentage of their purchases directly to your referral balance.
 
 Once you earn money through the referral program, you can use your balance to purchase numbers on OnlineSim.`,
-    tags: ["реферальная программа", "referral program", "реферальная ссылка", "заработать на рефералах"],
   },
 
-  // ===================== TELEGRAM (доп.) =====================
-  {
-    id: "telegram-5",
-    category: "telegram",
-    title: "Только официальное приложение + топ стран",
-    ru: `Используйте, пожалуйста, только официальное мобильное приложение Telegram. Если вы использовали его ранее, очистите кэш и переустановите. Затем запросите 2–3 номера из списка стран для лучших результатов:
-🔗 Рекомендуемые страны для Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
-    en: `You must use only the official Telegram mobile app. If you have used it previously, clear the cache and reinstall it. Then, please request 2–3 numbers from the list of countries for the best results:
-🔗 View recommended countries for Telegram (https://chatwoot.on-mail.ru/hc/onlinesim/articles/1719652167-best-countries-for-telegram)`,
-    tags: ["телеграм официальное приложение", "telegram official app", "топ стран телеграм", "рекомендуемые страны"],
-  },
-
-  // ===================== БЕСПЛАТНЫЕ НОМЕРА (доп.) =====================
   {
     id: "free-4",
     category: "free-numbers",
     title: "Номер архивирован",
     ru: `Этот номер архивирован и не может быть использован. Пожалуйста, попробуйте другой доступный номер.`,
     en: `This number is archived and cannot be used. Try please with another available one.`,
-    tags: ["номер архивирован", "archived number", "номер недоступен"],
   },
   {
     id: "free-5",
@@ -988,6 +1093,12 @@ Once you earn money through the referral program, you can use your balance to pu
     en: `Free numbers can be found on our website's main page at https://onlinesim.io/#try
 
 You can pick any available one and use it for SMS receiving. The code will appear under the number on a main page.`,
-    tags: ["где бесплатные номера", "free numbers page", "главная страница номера", "получить код"],
+  },
+  {
+    id: "error-1",
+    category: "errors",
+    title: "ERROR_WRONG_VERSION — вход заново / другой браузер",
+    ru: `Пожалуйста, войдите в свой аккаунт заново или откройте сайт onlinesim.io в другом браузере и проверьте.`,
+    en: `Please log in to your account again or open the onlinesim.io website in a different browser and check.`,
   },
 ];

@@ -5,8 +5,8 @@
     query: "",
     activeLang: {},
     serviceValue: {},
-    selectedService: null, // null = показываем все шаблоны; id — показываем ответ по сервису
-    activeCategory: null, // null = все категории; id — фильтр по категории
+    selectedService: null,
+    activeCategory: null,
   };
 
   const contentEl = document.getElementById("content");
@@ -16,16 +16,11 @@
   const servicesTabletEl = document.getElementById("servicesTablet");
   const categoryFiltersEl = document.getElementById("categoryFilters");
 
-  // ---------------- Brand icons (Simple Icons CDN, официальные SVG-логотипы) ----------------
-
   function brandIconUrl(slug) {
-    // jsDelivr отдаёт исходные SVG из пакета simple-icons по slug бренда.
     return (
       "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/" + slug + ".svg"
     );
   }
-
-  // ---------------- Theme ----------------
 
   function initTheme() {
     applyTheme(localStorage.getItem("ost-theme") || "light");
@@ -50,8 +45,6 @@
     applyTheme(current === "dark" ? "light" : "dark");
   });
 
-  // ---------------- Services tablet (grid of circular icons) ----------------
-
   function renderServicesTablet() {
     servicesTabletEl.innerHTML = "";
 
@@ -62,8 +55,6 @@
     updateServicesStates();
   }
 
-  // Есть ли у сервиса собственная категория с шаблонами в TEMPLATES
-  // (например service.id === "whatsapp" ↔ category: "whatsapp").
   function getServiceCategoryTemplates(serviceId) {
     const hasCategory = CATEGORIES.some(function (c) {
       return c.id === serviceId;
@@ -97,11 +88,9 @@
       "</div>";
 
     el.addEventListener("click", function () {
-      // повторный клик по тому же сервису — снять выбор
       state.selectedService =
         state.selectedService === service.id ? null : service.id;
-      // клик по иконке сервиса — выходим из поиска и фильтра категории,
-      // чтобы сразу увидеть ответ/шаблоны по этому сервису
+
       if (state.selectedService) {
         state.query = "";
         searchInput.value = "";
@@ -125,8 +114,6 @@
     });
   }
 
-  // ---------------- Category filter pills (sidebar) ----------------
-
   function renderCategoryFilters() {
     if (!categoryFiltersEl) return;
     categoryFiltersEl.innerHTML = "";
@@ -135,8 +122,6 @@
     categoryFiltersEl.appendChild(allPill);
 
     CATEGORIES.forEach(function (cat) {
-      // категории-сервисы (sidebar: false) уже есть в виде иконок справа —
-      // не дублируем их пилюлями в левом сайдбаре
       if (cat.sidebar === false) return;
       const count = TEMPLATES.filter(function (t) {
         return t.category === cat.id;
@@ -158,11 +143,9 @@
       "</span>";
 
     pill.addEventListener("click", function () {
-      // повторный клик по активной категории — снять фильтр
       state.activeCategory =
         state.activeCategory === categoryId ? null : categoryId;
-      // при выборе категории выходим из поиска и из карточки конкретного сервиса,
-      // чтобы сразу увидеть отфильтрованный список шаблонов
+
       state.selectedService = null;
       updateServicesStates();
       updateCategoryPillStates();
@@ -185,15 +168,12 @@
     });
   }
 
-  // ---------------- Search ----------------
-
   let searchDebounce = null;
   searchInput.addEventListener("input", function () {
     searchClear.classList.toggle("visible", searchInput.value.length > 0);
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(function () {
       state.query = searchInput.value.trim().toLowerCase();
-      // как только начинают искать — выходим из карточки сервиса и фильтра категории
       if (state.query) {
         state.selectedService = null;
         state.activeCategory = null;
@@ -232,10 +212,6 @@
     });
   }
 
-  // ---------------- Unique answer per service ----------------
-
-  // Для некоторых сервисов в общий текст добавляется уточнение про официальное
-  // мобильное приложение (перед финальной просьбой заказать ещё номера).
   const SERVICE_APP_HINT = {
     telegram: { ru: "Телеграм", en: "Telegram" },
     whatsapp: { ru: "WhatsApp", en: "WhatsApp" },
@@ -245,8 +221,8 @@
     const url = lang === "en" ? service.enUrl : service.ruUrl;
     const linkLabel =
       lang === "en"
-        ? "View recommended countries for " + service.name
-        : "Посмотреть рекомендации для " + service.name;
+        ? "🔗 View recommended countries for " + service.name
+        : "🔗 Лучшие страны для " + service.name;
 
     const appHint = SERVICE_APP_HINT[service.id];
     const appHintText = appHint
@@ -279,7 +255,6 @@
           " ещё 3-4 номера стран из списка для лучших результатов:";
 
     return {
-      // отображение: фраза — кликабельная гиперссылка
       display:
         escapeHtml(intro) +
         '\n🔗 <a href="' +
@@ -287,17 +262,13 @@
         '" target="_blank" rel="noopener">' +
         escapeHtml(linkLabel) +
         "</a>",
-      // копирование: чистый текст с URL в скобках — вставится в любой чат
       copy: intro + "\n🔗 " + linkLabel + " (" + url + ")",
     };
   }
 
-  // ---------------- Rendering ----------------
-
   function render() {
     contentEl.innerHTML = "";
 
-    // 1) Выбран сервис (клик по иконке справа)
     if (state.selectedService) {
       const svc = SERVICES.find(function (s) {
         return s.id === state.selectedService;
@@ -308,17 +279,16 @@
         const grid = document.createElement("div");
         grid.className = "cards-grid";
 
+        grid.appendChild(renderServiceAnswerCard(svc));
+
         if (categoryTemplates && categoryTemplates.length > 0) {
-          // у сервиса есть собственная категория — показываем все её шаблоны
           resultCountEl.textContent =
-            "Шаблонов по " + svc.name + ": " + categoryTemplates.length;
+            "Шаблонов по " + svc.name + ": " + (categoryTemplates.length + 1);
           categoryTemplates.forEach(function (t) {
             grid.appendChild(renderCard(t));
           });
         } else {
-          // отдельной категории нет — общий ответ про «СМС не приходит»
           resultCountEl.textContent = "";
-          grid.appendChild(renderServiceAnswerCard(svc));
         }
 
         contentEl.appendChild(grid);
@@ -326,7 +296,6 @@
       }
     }
 
-    // 2) Иначе — все шаблоны
     const filtered = getFilteredTemplates();
 
     if (filtered.length === 0) {
@@ -354,7 +323,6 @@
       return;
     }
 
-    // Без поиска — группируем по категориям
     CATEGORIES.forEach(function (cat) {
       const catTemplates = filtered.filter(function (t) {
         return t.category === cat.id;
@@ -448,7 +416,6 @@
     return card;
   }
 
-  // Обычная карточка шаблона (без изменений)
   function renderCard(template) {
     const card = document.createElement("div");
     card.className = "card";
@@ -563,8 +530,6 @@
     return text;
   }
 
-  // ---------------- Copy ----------------
-
   function copyToClipboard(text, btn) {
     const fallbackCopy = function () {
       const ta = document.createElement("textarea");
@@ -603,8 +568,6 @@
     }
   }
 
-  // ---------------- Helpers ----------------
-
   function escapeHtml(str) {
     return (str || "")
       .replace(/&/g, "&amp;")
@@ -635,8 +598,6 @@
   function checkIconHtml() {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
   }
-
-  // ---------------- Init ----------------
 
   initTheme();
   renderServicesTablet();

@@ -15,9 +15,12 @@
   --radius-lg: 18px;
   --radius-md: 12px;
   --radius-sm: 8px;
-  --shadow-sm: 0 1px 2px rgba(20, 22, 30, 0.04), 0 1px 1px rgba(20,22,30,0.03);
+  --shadow-sm:
+    0 1px 2px rgba(20, 22, 30, 0.04), 0 1px 1px rgba(20, 22, 30, 0.03);
   --shadow-md: 0 8px 24px rgba(20, 22, 30, 0.08);
-  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
 [data-theme="dark"] {
@@ -34,13 +37,16 @@
   --success: #3fcf7f;
   --success-soft: #16281e;
   --danger: #ff6b6b;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 12px 32px rgba(0,0,0,0.45);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -50,7 +56,9 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .app {
@@ -108,7 +116,11 @@ body {
   background: var(--surface);
   color: var(--text-muted);
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.15s;
   flex-shrink: 0;
 }
 
@@ -154,7 +166,9 @@ body {
   font-size: 15px;
   font-family: var(--font);
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   box-shadow: var(--shadow-sm);
 }
 
@@ -184,9 +198,14 @@ body {
   justify-content: center;
 }
 
-.search-clear.visible { display: inline-flex; }
+.search-clear.visible {
+  display: inline-flex;
+}
 
-.search-clear svg { width: 14px; height: 14px; }
+.search-clear svg {
+  width: 14px;
+  height: 14px;
+}
 
 .result-count {
   font-size: 12.5px;
@@ -200,12 +219,17 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 220px minmax(0, 1fr) 200px;
   gap: 24px;
   align-items: start;
 }
 
 .sidebar {
+  position: sticky;
+  top: 16px;
+}
+
+.services-sidebar {
   position: sticky;
   top: 16px;
 }
@@ -348,10 +372,14 @@ body {
   font-size: 13.5px;
   font-family: var(--font);
   outline: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 
-.service-input::placeholder { color: var(--text-faint); }
+.service-input::placeholder {
+  color: var(--text-faint);
+}
 
 .service-input:focus {
   border-style: solid;
@@ -484,8 +512,12 @@ body {
 
 /* ---------- Scrollbar ---------- */
 
-.template-text::-webkit-scrollbar { width: 6px; }
-.template-text::-webkit-scrollbar-track { background: transparent; }
+.template-text::-webkit-scrollbar {
+  width: 6px;
+}
+.template-text::-webkit-scrollbar-track {
+  background: transparent;
+}
 .template-text::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 3px;
@@ -497,7 +529,8 @@ body {
   .layout {
     grid-template-columns: 1fr;
   }
-  .sidebar {
+  .sidebar,
+  .services-sidebar {
     position: static;
   }
   .category-filters {
@@ -508,12 +541,155 @@ body {
   .pill {
     width: auto;
   }
+  .services-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
-  .app { padding: 16px 14px 60px; }
-  .header-title h1 { font-size: 16px; }
-  .card-head { flex-direction: column; }
-  .card-cat-badge { order: -1; }
-  .tag-list { display: none; }
+  .app {
+    padding: 16px 14px 60px;
+  }
+  .header-title h1 {
+    font-size: 16px;
+  }
+  .card-head {
+    flex-direction: column;
+  }
+  .card-cat-badge {
+    order: -1;
+  }
+  .tag-list {
+    display: none;
+  }
+}
+
+/* ---------- Services tablet (сетка кружков-иконок) ---------- */
+
+.services-tablet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 6px;
+  padding: 16px 10px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 2px;
+  border-radius: var(--radius-md);
+  transition: transform 0.15s ease;
+}
+
+.service-icon:hover {
+  transform: translateY(-2px);
+}
+.service-icon:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.service-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: var(--svc-color, var(--accent));
+  color: #fff;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+}
+
+.service-icon.active .service-icon-circle {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 3px var(--accent-soft),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.service-icon-glyph {
+  line-height: 1;
+  font-size: 22px;
+  color: #fff;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+/* Официальный SVG-логотип бренда (Simple Icons), залитый белым через CSS-маску */
+.service-icon-brand {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+}
+
+.service-icon-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 76px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.service-icon.active .service-icon-label {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+/* Ссылки внутри текста шаблона */
+.template-text a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.template-text a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Мобильная адаптация иконок ---------- */
+
+@media (max-width: 560px) {
+  .services-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(66px, 1fr));
+    gap: 10px 6px;
+    padding: 12px 8px 14px;
+  }
+  .service-icon-circle {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .service-icon-brand {
+    width: 20px;
+    height: 20px;
+  }
+  .service-icon-label {
+    font-size: 10px;
+    max-width: 62px;
+  }
 }

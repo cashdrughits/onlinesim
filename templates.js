@@ -70,7 +70,7 @@ If you want to test whether our free numbers are working, try requesting an SMS 
     id: "rent-1",
     category: "rent",
     title: "Что умеют арендные номера",
-    ru: `Номера раздела «Аренда номера» предоставляют возможность приёма СМС и определение цифр номера входящего вызова.`,
+    ru: `Номера раздела «Аренда номера» предоставляют возможность приёма СМС от сайтов, приложений, людей и определение цифр номера входящего вызова.`,
     en: `Numbers in the "Number Rent" section provide the ability to receive SMS and identify the caller's phone number on incoming calls.`,
   },
   {
@@ -84,19 +84,12 @@ If you want to test whether our free numbers are working, try requesting an SMS 
     id: "rent-3",
     category: "rent",
     title: "Other-сервис отключён, альтернатива — Number Rent",
-    ru: `Здравствуйте, сервис «Other» работал нестабильно, так как фильтры не работали надёжно. Они могли либо пропускать СМС с запрещённых сайтов, либо блокировать СМС полностью. Возвращать этот сервис мы не планируем.
+    ru: `Здравствуйте, сервис «Другие Сайты» работал нестабильно, так как фильтры не работали надёжно. Они могли либо пропускать СМС с запрещённых сайтов, либо блокировать СМС полностью. Возвращать этот сервис мы не планируем.
 
 Есть альтернатива — «Аренда номера». У таких номеров много преимуществ, включая возможность продлить срок аренды, и они могут принимать СМС от любого отправителя, кроме запрещённых (банки, операторы связи, государственные сайты и т.д.).`,
-    en: `Hello, the "Other" service was unstable because the filters did not work reliably. They could either allow SMS from prohibited websites or block SMS entirely. We do not plan to bring this service back.
+    en: `Hello, the "Other Sites" service was unstable because the filters did not work reliably. They could either allow SMS from prohibited websites or block SMS entirely. We do not plan to bring this service back.
 
-There is an alternative — "Number Rent". These numbers have many advantages, including the option to extend the rental period, and they can receive SMS from any sender except prohibited ones (banks, telecom operators, government websites, etc.).`,
-  },
-  {
-    id: "rent-4",
-    category: "rent",
-    title: "Постоплатные номера — статуса нет",
-    ru: `У нас нет информации о том, какие номера являются постоплатными, поэтому, пожалуйста, закажите новый номер. Средства списываются только после получения СМС.`,
-    en: `We do not have information on which numbers are postpaid, so please order a new number. Funds are deducted only after the SMS is received.`,
+There is an alternative — "Rent Numbers". These numbers have many advantages, including the option to extend the rental period, and they can receive SMS from any sender except prohibited ones (banks, telecom operators, government websites, etc.).`,
   },
 
   {
@@ -272,12 +265,14 @@ I also recommend reinstalling WhatsApp and using a VPN or proxy matching the num
     id: "svc-tg-2",
     category: "telegram",
     title: "Telegram — просит оплату премиум",
-    ru: `Telegram запрашивает оплату премиум в качестве меры безопасности, если обнаруживает подозрительную активность.
+    ru: `Не нужно оплачивать премиум для получения СМС. 
+Telegram запрашивает оплату премиума, если замечает подозрительную активность со стороны пользователя. Чтобы снизить риск таких ограничений, рекомендую переустановить мобильное приложение Telegram и изменить IP адрес с помощью впн/прокси, желательно под страну номера.
 
-Чтобы Telegram перестал запрашивать оплату премиум, очистите кэш и переустановите мобильное приложение Telegram. Затем, по возможности, смените IP-адрес при помощи VPN или прокси.`,
-    en: `Telegram asks for premium payment as a security measure if they detect suspicious activity.
+Затем закажите несколько номеров стран из списка, так как по статистике Telegram чаще отправляет на них СМС: Турция, Португалия, Британия, Польша`,
+    en: `You don't need to pay a premium to receive SMS.
+Telegram requests premium payment if it notices suspicious activity from the user. To reduce the risk of such restrictions, I recommend reinstalling the Telegram mobile application and changing the IP address using a VPN/proxy, preferably to the country of the number.
 
-To stop Telegram from asking for premium payment, clear the cache and reinstall the Telegram mobile app. Then, if possible, change your IP address using a VPN or proxy.`,
+Then order several numbers of countries from the list, since according to statistics Telegram sends SMS to them more often: Türkiye, Portugal, Britain, Poland`,
   },
   {
     id: "svc-tg-3",
